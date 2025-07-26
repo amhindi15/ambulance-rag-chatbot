@@ -9,7 +9,7 @@ import fs from 'fs/promises'
 import path from 'path'
  import rawText from '@/knowledge/medical-protocol.txt?raw'
 
-export const runtime = 'edge'
+// export const runtime = 'edge'
 
 export async function POST(req) {
   const { messages } = await req.json()
