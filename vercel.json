@@ -1,3 +1,13 @@
 {
-  "outputDirectory": "dist"
+  "functions": {
+    "api/chat.js": {
+      "runtime": "edge"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/chat",
+      "dest": "src/api/chat.js"
+    }
+  ]
 }
