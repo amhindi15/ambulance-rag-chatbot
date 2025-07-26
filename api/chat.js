@@ -23,15 +23,16 @@ export async function POST(req) {
 
   const vectorStore = await MemoryVectorStore.fromDocuments(
     docs,
-    new OpenAIEmbeddings({ modelName: 'text-embedding-3-small' })
-  )
-
-  const model = new ChatOpenAI({
-    temperature: 0,
-    streaming: true,
-    modelName: 'gpt-4o'
-  })
-
+   new OpenAIEmbeddings({
+  modelName: 'text-embedding-3-small',
+  openAIApiKey: process.env.OPENAI_API_KEY
+})
+ const model = new ChatOpenAI({
+  temperature: 0,
+  streaming: true,
+  modelName: 'gpt-4o',
+  openAIApiKey: process.env.OPENAI_API_KEY
+})
   const chain = ConversationalRetrievalQAChain.fromLLM(
     model,
     vectorStore.asRetriever(),
