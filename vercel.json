@@ -1,14 +1,8 @@
 {
+  "version": 2,
   "functions": {
-    "api/chat.js": {
-      "runtime": "edge-runtime@2.0.0"
+    "api/**/*.js": {
+      "runtime": "nodejs18.x"
     }
-  },
-  "routes": [
-    {
-      "src": "/api/chat",
-      "dest": "src/api/chat.js"
-    }
-  ]
+  }
 }
-
