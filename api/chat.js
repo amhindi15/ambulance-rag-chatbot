@@ -7,19 +7,23 @@ import { OpenAIStream, StreamingTextResponse } from 'ai'
 import fs from 'fs/promises'
 import path from 'path'
 
+export const config = {
+  runtime: 'edge',
+}
+
 export async function POST(req) {
   try {
     const { messages } = await req.json()
     const question = messages[messages.length - 1].content
 
-    const filePath = path.join(process.cwd(), 'src/knowledge/medical-protocol.txt')
+    // قراءة الملف النصي من مجلد knowledge في جذر المشروع
+    const filePath = path.join(process.cwd(), 'knowledge', 'medical-protocol.txt')
     const rawText = await fs.readFile(filePath, 'utf-8')
 
     const textSplitter = new RecursiveCharacterTextSplitter({
       chunkSize: 1000,
       chunkOverlap: 200
     })
-
     const docs = await textSplitter.createDocuments([rawText])
 
     const vectorStore = await MemoryVectorStore.fromDocuments(

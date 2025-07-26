@@ -1,5 +1,4 @@
 import Chatbot from './components/Chatbot/Chatbot';
-import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent } from '@/components/ui/card.jsx'
@@ -175,22 +174,20 @@ function HomePage() {
   )
 }
 
-// التطبيق الرئيسي مع التوجيه
+// ✅ التطبيق الرئيسي
 export default function App() {
   return (
-    <>
-      <Chatbot />
-      <Router>
-        <div className="App">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/medical" element={<MedicalCase />} />
-            <Route path="/injury" element={<InjuryCase />} />
-            <Route path="/resuscitation" element={<ResuscitationCase />} />
-            <Route path="/death" element={<DeathCase />} />
-          </Routes>
-        </div>
-      </Router>
-    </>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/medical" element={<MedicalCase />} />
+          <Route path="/injury" element={<InjuryCase />} />
+          <Route path="/resuscitation" element={<ResuscitationCase />} />
+          <Route path="/death" element={<DeathCase />} />
+        </Routes>
+        <Chatbot />
+      </div>
+    </Router>
   );
 }
