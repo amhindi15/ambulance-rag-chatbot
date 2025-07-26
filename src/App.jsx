@@ -193,26 +193,21 @@ function HomePage() {
 }
 
 // التطبيق الرئيسي مع التوجيه
-function App() {
-  return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/medical" element={<MedicalCase />} />
-          <Route path="/injury" element={<InjuryCase />} />
-          <Route path="/resuscitation" element={<ResuscitationCase />} />
-          <Route path="/death" element={<DeathCase />} />
-        </Routes>
-      </div>
-    </Router>
-  )
-}
-
-
-
-
-
 export default function App() {
-  return <><AppWrapper /><Chatbot /></>;
+  return (
+    <AppWrapper>
+      <Chatbot />
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/medical" element={<MedicalCase />} />
+            <Route path="/injury" element={<InjuryCase />} />
+            <Route path="/resuscitation" element={<ResuscitationCase />} />
+            <Route path="/death" element={<DeathCase />} />
+          </Routes>
+        </div>
+      </Router>
+    </AppWrapper>
+  );
 }
