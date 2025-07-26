@@ -1,9 +1,10 @@
-
 import { useChat } from 'ai/react';
 import { useState } from 'react';
 
 export default function Chatbot() {
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
+  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+    api: '/api/chat-node'  // ← مهم جداً!
+  });
   const [isOpen, setIsOpen] = useState(false);
 
   return (

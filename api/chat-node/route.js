@@ -1,3 +1,5 @@
+export const runtime = 'nodejs'
+
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter'
 import { MemoryVectorStore } from 'langchain/vectorstores/memory'
@@ -7,16 +9,11 @@ import { OpenAIStream, StreamingTextResponse } from 'ai'
 import fs from 'fs/promises'
 import path from 'path'
 
-export const config = {
-  runtime: 'edge',
-}
-
 export async function POST(req) {
   try {
     const { messages } = await req.json()
     const question = messages[messages.length - 1].content
 
-    // قراءة الملف النصي من مجلد knowledge في جذر المشروع
     const filePath = path.join(process.cwd(), 'knowledge', 'medical-protocol.txt')
     const rawText = await fs.readFile(filePath, 'utf-8')
 
