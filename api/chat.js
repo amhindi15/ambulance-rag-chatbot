@@ -3,13 +3,17 @@ import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter'
 import { MemoryVectorStore } from 'langchain/vectorstores/memory'
 import { ChatOpenAI } from 'langchain/chat_models/openai'
 import { ConversationalRetrievalQAChain } from 'langchain/chains'
-import { OpenAIStream, StreamingTextResponse } from 'ai' // تأكد أنك مثبت ai
-import rawText from '@/knowledge/medical-protocol.txt?raw'
+import { OpenAIStream, StreamingTextResponse } from 'ai'
+import fs from 'fs/promises'
+import path from 'path'
 
 export async function POST(req) {
   try {
     const { messages } = await req.json()
     const question = messages[messages.length - 1].content
+
+    const filePath = path.join(process.cwd(), 'src/knowledge/medical-protocol.txt')
+    const rawText = await fs.readFile(filePath, 'utf-8')
 
     const textSplitter = new RecursiveCharacterTextSplitter({
       chunkSize: 1000,
