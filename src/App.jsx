@@ -68,7 +68,6 @@ function HomePage() {
       {/* الهيدر */}
       <header className="text-center py-12 text-white">
         <div className="container mx-auto px-4">
-          {/* الشعار */}
           <div className="mb-8 fade-in">
             <img 
               src={logo} 
@@ -76,16 +75,12 @@ function HomePage() {
               className="w-32 h-32 mx-auto rounded-full shadow-2xl crescent-icon"
             />
           </div>
-          
-          {/* العنوان الرئيسي */}
           <h1 className="text-5xl md:text-6xl font-bold mb-4 arabic-font fade-in">
             المساعد الميداني
           </h1>
           <h2 className="text-2xl md:text-3xl font-light mb-2 arabic-font fade-in">
             Field Assistant
           </h2>
-          
-          {/* العنوان الفرعي */}
           <p className="text-xl md:text-2xl font-medium arabic-font fade-in">
             جهدنا هذا لخدمتكم، فاذكرونا بدعوة
           </p>
@@ -107,28 +102,21 @@ function HomePage() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardContent className="p-8 text-center">
-                  {/* الأيقونة */}
                   <div className={`w-20 h-20 ${caseType.color} rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg`}>
                     <IconComponent className="w-10 h-10 text-white" />
                   </div>
-                  
-                  {/* العنوان */}
                   <h3 className="text-2xl font-bold mb-2 arabic-font rtl text-gray-800">
                     {caseType.title}
                   </h3>
                   <h4 className="text-lg font-semibold mb-4 ltr text-gray-600">
                     {caseType.titleEn}
                   </h4>
-                  
-                  {/* الوصف */}
                   <p className="text-gray-600 mb-4 arabic-font rtl">
                     {caseType.description}
                   </p>
                   <p className="text-gray-500 mb-6 ltr text-sm">
                     {caseType.descriptionEn}
                   </p>
-                  
-                  {/* زر البدء */}
                   <Button 
                     onClick={() => navigate(caseType.route)}
                     className="red-crescent-button text-white px-8 py-3 rounded-lg font-bold arabic-font w-full"
@@ -145,22 +133,19 @@ function HomePage() {
 
       {/* الفوتر */}
       <footer className="bg-white/10 backdrop-blur-sm border-t border-white/20 py-12 text-white">
-  <div className="container mx-auto px-4">
-    <div className="flex flex-col items-center justify-center space-y-6 text-center">
-      {/* مساعدات التطوير */}
-      <div className="bg-white/5 rounded-xl p-6 max-w-2xl mx-auto border border-white/10">
-        <h3 className="text-xl font-bold mb-3 arabic-font rtl text-white text-center">
-          إعداد وتنفيذ
-        </h3>
-        <p className="text-lg arabic-font rtl text-white/90 mb-2 text-center">
-          عمار الهندي - سامي الفيفي ( قطاع شمال جدة )
-        </p>
-        <p className="text-sm ltr text-white/70 text-center">
-          Developed by: Ammar Al-Hindi - Sami Al-Faifi (North Jeddah Sector)
-        </p>
-      </div>
-            
-            {/* رسالة الاستخدام */}
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col items-center justify-center space-y-6 text-center">
+            <div className="bg-white/5 rounded-xl p-6 max-w-2xl mx-auto border border-white/10">
+              <h3 className="text-xl font-bold mb-3 arabic-font rtl text-white text-center">
+                إعداد وتنفيذ
+              </h3>
+              <p className="text-lg arabic-font rtl text-white/90 mb-2 text-center">
+                عمار الهندي - سامي الفيفي ( قطاع شمال جدة )
+              </p>
+              <p className="text-sm ltr text-white/70 text-center">
+                Developed by: Ammar Al-Hindi - Sami Al-Faifi (North Jeddah Sector)
+              </p>
+            </div>
             <div className="bg-white/5 rounded-xl p-6 max-w-3xl mx-auto border border-white/10">
               <div className="flex items-center justify-center mb-3">
                 <FileText className="w-6 h-6 text-white/80 ml-2" />
@@ -178,8 +163,6 @@ function HomePage() {
                 This assistant was created to help you write professional and accurate emergency reports. Its use is optional and aims to facilitate your work and save time.
               </p>
             </div>
-            
-            {/* حقوق النشر */}
             <div className="pt-4 border-t border-white/20">
               <p className="text-xs text-white/60">
                 © 2025 مساعد التقارير الإسعافية - جميع الحقوق محفوظة
@@ -195,7 +178,7 @@ function HomePage() {
 // التطبيق الرئيسي مع التوجيه
 export default function App() {
   return (
-    <AppWrapper>
+    <>
       <Chatbot />
       <Router>
         <div className="App">
@@ -208,5 +191,6 @@ export default function App() {
           </Routes>
         </div>
       </Router>
+    </>
   );
 }
