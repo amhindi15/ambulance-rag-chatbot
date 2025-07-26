@@ -7,6 +7,7 @@ import { ChatOpenAI } from 'langchain/chat_models/openai'
 import { ConversationalRetrievalQAChain } from 'langchain/chains'
 import fs from 'fs/promises'
 import path from 'path'
+ import rawText from '@/knowledge/medical-protocol.txt?raw'
 
 export const runtime = 'edge'
 
@@ -14,8 +15,8 @@ export async function POST(req) {
   const { messages } = await req.json()
   const question = messages[messages.length - 1].content
 
-  const filePath = path.join(process.cwd(), 'knowledge', 'medical-protocol.txt')
-  const rawText = await fs.readFile(filePath, 'utf-8')
+ 
+
 
   const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 1000, chunkOverlap: 200 })
   const docs = await textSplitter.createDocuments([rawText])
